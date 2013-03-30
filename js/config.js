@@ -1,3 +1,6 @@
+/**
+ * Configuration options
+ */
 var config = {
     "container": "container",
     "width": window.innerWidth,

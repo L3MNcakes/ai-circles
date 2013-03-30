@@ -1,3 +1,8 @@
+/**
+ * World
+ * @param num_agents Int
+ * @param num_food Int
+ */
 function World(num_agents, num_food) {
     this.num_agents = num_agents;
     this.num_food = num_food;
@@ -17,6 +22,9 @@ function World(num_agents, num_food) {
     this.spawn_world();
 }
 
+/**
+ * Initializes a World with Agents and Food
+ */
 World.prototype.spawn_world = function() {
     for(var i=0;i<this.num_agents;i++) {
         agent = new Agent(this);
@@ -29,6 +37,9 @@ World.prototype.spawn_world = function() {
     }
 }
 
+/**
+ * Spawns additional food
+ */
 World.prototype.spawn_more_food = function() {
     for(var i=0;i<this.agents.length/2;i++) {
         food = new Food();
@@ -41,6 +52,9 @@ World.prototype.spawn_more_food = function() {
     }
 }
 
+/**
+ * Displays next frame of animation
+ */
 World.prototype.tick = function() {
     if(this.food.length < 10) this.spawn_more_food();
     var len = this.agents.length;
@@ -70,6 +84,9 @@ World.prototype.tick = function() {
     this.stage.draw();
 }
 
+/**
+ * Returns the index of a Food located at coordinates x,y
+ */
 World.prototype.findFoodByCoords = function(x,y) {
     var len = this.food.length;
     for(var i=0;i<len;i++) {

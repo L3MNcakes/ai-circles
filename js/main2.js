@@ -1,3 +1,6 @@
+/**
+ * main loop after window loads
+ */
 window.onload = function() {
     world = new World(config.num_agents, config.start_food);
     

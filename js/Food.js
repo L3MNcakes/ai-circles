@@ -1,3 +1,6 @@
+/**
+ * Food
+ */
 function Food() {
     this.position = {"x": Math.floor(Math.random() * config.width),
                      "y": Math.floor(Math.random() * config.height)};
@@ -12,6 +15,9 @@ function Food() {
     });
 }
 
+/**
+ * Draws a Food to the screen
+ */
 Food.prototype.draw = function(layer) {
     this.res.remove();
     if(typeof layer !== undefined) {

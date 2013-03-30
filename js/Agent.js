@@ -1,3 +1,7 @@
+/**
+ * Agent
+ * @param world World
+ */
 function Agent(world) { 
     this.color = this.get_random_color();
     this.speed = this.generate_random_number(config.speed_min, config.speed_max);
@@ -43,10 +47,16 @@ function Agent(world) {
     this.world = world;
 }
 
+/**
+ * Generates a random number
+ */
 Agent.prototype.generate_random_number = function(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+/**
+ * Returns a random color
+ */
 Agent.prototype.get_random_color = function() {
     letters = '0123456789ABCDEF'.split('');
     color = '#';
@@ -56,6 +66,9 @@ Agent.prototype.get_random_color = function() {
     return color;
 }
 
+/**
+ * Draws the agent to the screen
+ */
 Agent.prototype.draw = function(layer) {
     this.res.remove();
     this.res.destroy();
@@ -91,6 +104,9 @@ Agent.prototype.draw = function(layer) {
     }
 }
 
+/**
+ * Tells the Agent what to do next
+ */
 Agent.prototype.update = function() {
     var arrivedX = false;
     var arrivedY = false;
@@ -146,6 +162,9 @@ Agent.prototype.update = function() {
     }
 }
 
+/**
+ * Makes a decision on what to do next
+ */
 Agent.prototype.make_decision = function() {
     if(this.has_food < this.min_food) {
         var len = this.world.food.length;        
@@ -181,6 +200,9 @@ Agent.prototype.make_decision = function() {
     }
 }
 
+/**
+ * Eats a food if on top of food
+ */
 Agent.prototype.eat_food = function() {
     ind = this.world.findFoodByCoords(this.position.x, this.position.y)
     if(ind !== false) {
@@ -190,6 +212,9 @@ Agent.prototype.eat_food = function() {
     }
 }
 
+/**
+ * Locates another Agent to mate with
+ */
 Agent.prototype.find_mate = function() {
     var len = this.world.agents.length;
     for(var i=0;i<len;i++) {
@@ -209,6 +234,9 @@ Agent.prototype.find_mate = function() {
     }
 }
 
+/**
+ * Perform mating ritual. ;)
+ */
 Agent.prototype.do_mate = function() {
     gene1 = new Array();
     gene1.push(this.color);
